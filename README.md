@@ -69,6 +69,7 @@ You can have multiple fingerprints in the directory, in which case all fingerpri
 - `removeAllFingerprints`: remove all fingerprints
 - `setDefaultSecureProtocol(protocol)`: set the default protocol to use for `agentOptions`
 - `getLastURL`: called to return the very last url pinned
+- `getFingerprintForURL(url,callback)`: get a fingerprint for a url. (only available on machines with openssl binary such as OSX and Linux. For Win32, you have to install openssl to use this)
 
 In addition to the APIs above, all APIs that are on the `request` library are also available (such as `get`, `post`, etc).  This library should be a drop-in replacement for the request library.
 

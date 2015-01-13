@@ -2,8 +2,7 @@ var should = require('should'),
 	wrench = require('wrench'),
 	request = require('../'),
 	fs = require('fs'),
-	path = require('path'),
-	helper = require('./helper');
+	path = require('path');
 
 var TMP = path.join(require('os').tmpdir(), String(+new Date()));
 
@@ -32,7 +31,7 @@ describe('pinned url', function(){
 			done();
 		}
 		else {
-			helper.getFingerprintForURL('https://www.google.com', function(err,f) {
+			request.getFingerprintForURL('https://www.google.com', function(err,f) {
 				fingerprint1 = f;
 				should(err).be.null;
 				should(fingerprint1).be.a.String;
@@ -50,7 +49,7 @@ describe('pinned url', function(){
 			done();
 		}
 		else {
-			helper.getFingerprintForURL('https://google.com', function(err,f) {
+			request.getFingerprintForURL('https://google.com', function(err,f) {
 				fingerprint2 = f;
 				should(err).be.null;
 				should(fingerprint2).be.a.String;
