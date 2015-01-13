@@ -40,6 +40,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('cover', ['kahvesi', 'report']);
-	grunt.registerTask('default', ['jshint', 'mochaTest']);
+	grunt.registerTask('test', ['jshint', 'mochaTest']);
+	grunt.registerTask('default', ['test']);
 
 };
