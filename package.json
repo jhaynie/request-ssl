@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/jhaynie/request-ssl",
   "dependencies": {
+    "debug": "^2.1.1",
     "lodash": "^2.4.1",
     "request": "^2.51.0"
   },
