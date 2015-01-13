@@ -200,4 +200,15 @@ describe('pinned url', function(){
 		should(request.request).be.an.object;
 	});
 
+	if (!process.env.TRAVIS) {
+		it('should getting fingerprint using domain instead of URL',function(done){
+			this.timeout(5000);
+			request.getFingerprintForURL('www.google.com', function(err,f) {
+				should(err).be.null;
+				should(fingerprint1).be.a.String;
+				request.addFingerprint('https://www.google.com',fingerprint1);
+				done();
+			});
+		});
+	}
 });
