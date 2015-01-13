@@ -1,4 +1,4 @@
-# Request SSL [![Build Status](https://travis-ci.org/jhaynie/request-ssl.svg?branch=master)](https://travis-ci.org/appcelerator/appc-install) [![npm version](https://badge.fury.io/js/request-ssl.svg)](http://badge.fury.io/js/request-ssl)
+# Request SSL [![Build Status](https://travis-ci.org/jhaynie/request-ssl.svg?branch=master)](https://travis-ci.org/jhaynie/request-ssl) [![npm version](https://badge.fury.io/js/request-ssl.svg)](http://badge.fury.io/js/request-ssl)
 
 
 ## Quick Start
