@@ -28,7 +28,7 @@ describe('pinned url', function(){
 		// travis seems to not want to run the client
 		if (process.env.TRAVIS) {
 			fingerprint1 = process.env.FINGERPRINT_WWW_GOOGLE_COM;
-			request.addFingerprint(fingerprint1);
+			request.addFingerprint('https://www.google.com',fingerprint1);
 			done();
 		}
 		else {
@@ -46,7 +46,7 @@ describe('pinned url', function(){
 		// travis seems to not want to run the client
 		if (process.env.TRAVIS) {
 			fingerprint2 = process.env.FINGERPRINT_GOOGLE_COM;
-			request.addFingerprint(fingerprint1);
+			request.addFingerprint('https://google.com',fingerprint1);
 			done();
 		}
 		else {
