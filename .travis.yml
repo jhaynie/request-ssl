@@ -5,4 +5,5 @@ node_js:
 - '0.10'
 before_script:
 - npm install -g grunt-cli
-- openssl x509  -noout -fingerprint -sha1 -in <(openssl x509 -in <(openssl s_client -connect www.google.com:443 -prexit 2>/dev/null))
+- export FINGERPRINT_WWW_GOOGLE_COM=`openssl x509  -noout -fingerprint -sha1 -in <(openssl x509 -in <(openssl s_client -connect www.google.com:443 -prexit 2>/dev/null))`
+- export FINGERPRINT_GOOGLE_COM=`openssl x509  -noout -fingerprint -sha1 -in <(openssl x509 -in <(openssl s_client -connect google.com:443 -prexit 2>/dev/null))`
