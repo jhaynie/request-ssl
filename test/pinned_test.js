@@ -24,39 +24,23 @@ describe('pinned url', function(){
 	});
 
 	it('should fetch www.google.com fingerprint', function(done) {
-		// travis seems to not want to run the client
-		if (process.env.TRAVIS) {
-			fingerprint1 = process.env.FINGERPRINT_WWW_GOOGLE_COM;
+		request.getFingerprintForURL('https://www.google.com', function(err,f) {
+			fingerprint1 = f;
+			should(err).be.null;
+			should(fingerprint1).be.a.String;
 			request.addFingerprint('https://www.google.com',fingerprint1);
 			done();
-		}
-		else {
-			request.getFingerprintForURL('https://www.google.com', function(err,f) {
-				fingerprint1 = f;
-				should(err).be.null;
-				should(fingerprint1).be.a.String;
-				request.addFingerprint('https://www.google.com',fingerprint1);
-				done();
-			});
-		}
+		});
 	});
 
 	it('should fetch google.com fingerprint', function(done) {
-		// travis seems to not want to run the client
-		if (process.env.TRAVIS) {
-			fingerprint2 = process.env.FINGERPRINT_GOOGLE_COM;
-			request.addFingerprint('https://google.com',fingerprint1);
+		request.getFingerprintForURL('https://google.com', function(err,f) {
+			fingerprint2 = f;
+			should(err).be.null;
+			should(fingerprint2).be.a.String;
+			request.addFingerprint('https://google.com',fingerprint2);
 			done();
-		}
-		else {
-			request.getFingerprintForURL('https://google.com', function(err,f) {
-				fingerprint2 = f;
-				should(err).be.null;
-				should(fingerprint2).be.a.String;
-				request.addFingerprint('https://google.com',fingerprint2);
-				done();
-			});
-		}
+		});
 	});
 
 	it('should pin https://www.google.com with #request.get', function(done){
@@ -200,15 +184,23 @@ describe('pinned url', function(){
 		should(request.request).be.an.object;
 	});
 
-	if (!process.env.TRAVIS) {
-		it('should getting fingerprint using domain instead of URL',function(done){
-			this.timeout(5000);
-			request.getFingerprintForURL('www.google.com', function(err,f) {
-				should(err).be.null;
-				should(fingerprint1).be.a.String;
-				request.addFingerprint('https://www.google.com',fingerprint1);
-				done();
-			});
+	it('should getting fingerprint using domain instead of URL',function(done){
+		this.timeout(5000);
+		request.getFingerprintForURL('www.google.com', function(err,f) {
+			should(err).be.null;
+			should(fingerprint1).be.a.String;
+			request.addFingerprint('https://www.google.com',fingerprint1);
+			done();
 		});
-	}
+	});
+
+
+	it('should getting fingerprint with combo SSL cert',function(done){
+		this.timeout(5000);
+		request.getFingerprintForURL('software.appcelerator.com', function(err,f) {
+			should(err).be.null;
+			should(f).be.equal('9E:73:EB:E9:B7:FE:DB:E4:FC:83:E9:23:9E:AB:6C:BB:B1:85:8D:57');
+			done();
+		});
+	});
 });
