@@ -184,7 +184,7 @@ describe('pinned url', function(){
 		should(request.request).be.an.object;
 	});
 
-	it('should getting fingerprint using domain instead of URL',function(done){
+	it('should support getting fingerprint using domain instead of URL',function(done){
 		this.timeout(5000);
 		request.getFingerprintForURL('www.google.com', function(err,f) {
 			should(err).be.null;
@@ -194,8 +194,7 @@ describe('pinned url', function(){
 		});
 	});
 
-
-	it('should getting fingerprint with combo SSL cert',function(done){
+	it('should support getting fingerprint with combo SSL cert',function(done){
 		this.timeout(5000);
 		request.getFingerprintForURL('software.appcelerator.com', function(err,f) {
 			should(err).be.null;
@@ -203,4 +202,24 @@ describe('pinned url', function(){
 			done();
 		});
 	});
+
+	it('should request initializer',function(done){
+		this.timeout(5000);
+		request.getFingerprintForURL('www.google.com', function(err,f) {
+			should(err).not.be.ok;
+			should(f).be.ok;
+			request.addFingerprint('https://www.google.com',f);
+			var init = false;
+			request.registerInitializer(function(callback){
+				init = true;
+				callback();
+			});
+			request.get('https://www.google.com', function(err,resp){
+				should(err).not.be.ok;
+				should(init).be.true;
+				done();
+			});
+		});
+	});
+
 });
