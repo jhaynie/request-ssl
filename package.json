@@ -1,6 +1,6 @@
 {
   "name": "request-ssl",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Pinned SSL version of the Request library",
   "main": "index.js",
   "scripts": {
