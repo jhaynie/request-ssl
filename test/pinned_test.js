@@ -198,7 +198,8 @@ describe('pinned url', function(){
 		this.timeout(5000);
 		request.getFingerprintForURL('software.appcelerator.com', function(err,f) {
 			should(err).be.null;
-			should(f).be.equal('9E:73:EB:E9:B7:FE:DB:E4:FC:83:E9:23:9E:AB:6C:BB:B1:85:8D:57');
+			should(f).be.equal('DB:59:EB:CB:98:E0:90:2E:9D:77:55:75:FA:CB:C7:34:D0:3F:3D:84');
+			//should(f).be.equal('9E:73:EB:E9:B7:FE:DB:E4:FC:83:E9:23:9E:AB:6C:BB:B1:85:8D:57');
 			done();
 		});
 	});
